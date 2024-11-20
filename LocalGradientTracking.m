@@ -9,10 +9,10 @@ exportTiffs = false; %toggle .tiff figure generation
 expDirs = listexpdirs(dateFile); 
 head(expDirs)
 allMSDData = cell([]); %preallocate
-for eNum =1:1%numel(expDirs) %%%%%%%%%%%%%%% loop through experiment folders %%%%%%%%%%%%%%%%
+for eNum =1:numel(expDirs) %%%%%%%%%%%%%%% loop through experiment folders %%%%%%%%%%%%%%%%
     [nd2Files, nd2Count, fileFullPaths] = listnd2s(expDirs,eNum); 
     msdData = cell([]); %preallocate
-    for vidIdx = 1:1%height(nd2Files) %%%%%%%%%%%%%%%%%% loop over nd2 files %%%%%%%%%%%%%%%
+    for vidIdx = 1:height(nd2Files) %%%%%%%%%%%%%%%%%% loop over nd2 files %%%%%%%%%%%%%%%
         bfrObj = BioformatsImage(char(fileFullPaths(nd2Count(vidIdx))));
         maxFrames = round(bfrObj.sizeT);
         wb = waitbar(0, "Importing ND2 file");
